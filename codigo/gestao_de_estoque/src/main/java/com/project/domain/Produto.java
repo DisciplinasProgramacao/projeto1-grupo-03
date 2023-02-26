@@ -4,11 +4,12 @@ import lombok.Data;
 
 @Data
 public class Produto {
+    static double IMPOSTOS_PORCENTAGEM = 0.18;
+
     String nome;
     String descricao;
-    Double precoCusto;
-    Double precoVenda;
-    int lucroPorcentagem;
-    int impostosPorcentagem;
+    double precoCusto;
+    double precoVenda;
+    double lucroPorcentagem;
     int estoque;
 }
