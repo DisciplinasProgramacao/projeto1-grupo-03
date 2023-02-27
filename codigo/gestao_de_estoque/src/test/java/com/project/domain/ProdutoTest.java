@@ -3,6 +3,8 @@ package com.project.domain;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+
 public class ProdutoTest {
 
     private Produto produto;
@@ -29,5 +31,16 @@ public class ProdutoTest {
     @Test(expected = RuntimeException.class)
     public void lucroPorcentagemMaiorTest() {
         produto.setLucroPorcentagem(0.81);
+    }
+
+    /**
+     * Verifica se o cálculo de imposto está como esperado
+     */
+    @Test
+    public void getImpostosTest() {
+        produto.setLucroPorcentagem(0.5);
+        produto.setPrecoCusto(50);
+        double impostos = produto.getImpostos();
+        assertEquals(13.5, impostos, 0.01);
     }
 }

@@ -25,4 +25,11 @@ public class Produto {
             throw new RuntimeException("Porcentagem inválida.");
         }
     }
+
+    /**
+     * @return Valor total a ser pago de imposto sendo, 18% sobre a soma do custo e da margem de lucro.
+     */
+    public double getImpostos() {
+        return (precoCusto * (1 + lucroPorcentagem)) * IMPOSTOS_PORCENTAGEM;
+    }
 }
