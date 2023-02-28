@@ -42,4 +42,14 @@ public class Produto {
            throw new RuntimeException("A descrição deve ter 3 ou mais caracteres.");
         }
     }
+
+    public boolean checaEstoqueMinimo(int estoque, int estoqueMinimo) {
+        if(estoque < estoqueMinimo) {
+            return true;
+        }
+        else {
+            return false;
+        }
+
+    }
 }

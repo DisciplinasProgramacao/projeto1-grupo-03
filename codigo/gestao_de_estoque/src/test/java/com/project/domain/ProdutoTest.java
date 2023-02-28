@@ -58,4 +58,19 @@ public class ProdutoTest {
         assertThrows(RuntimeException.class, () -> {produto.setDescricao("aa");});
     }
 
+    /*
+     * Verifica se o estoqueMinimo não é ativado ao chegar no minimo
+     */
+    @Test
+    public void checaEstoqueNoMinimoTest() {
+        assertEquals(false, produto.checaEstoqueMinimo(5, 5));
+    }
+
+    /*
+     * Verifica se o estoqueMinimo é ativado ao estar abaixo do mínimo
+     */
+    @Test
+    public void checaEstoqueAbaixoDoMinimoTest() {
+        assertEquals(true, produto.checaEstoqueMinimo(4, 5));
+    }
 }
