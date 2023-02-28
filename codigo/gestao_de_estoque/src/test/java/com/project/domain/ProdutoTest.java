@@ -1,9 +1,10 @@
 package com.project.domain;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class ProdutoTest {
 
@@ -12,7 +13,7 @@ public class ProdutoTest {
     /**
      * Configura a instância de produto para cada novo teste a ser rodado
      */
-    @Before
+    @BeforeEach
     public void setUp() {
         produto = new Produto();
     }
@@ -20,17 +21,21 @@ public class ProdutoTest {
     /**
      * Verifica as bordas se não está menor os 30% pedidos como requisito
      */
-    @Test(expected = RuntimeException.class)
+    @Test
     public void lucroPorcentagemMenorTest() {
-        produto.setLucroPorcentagem(0.29);
+        assertThrows(RuntimeException.class, () -> {
+            produto.setLucroPorcentagem(0.29);
+        });
     }
 
     /**
      * Verifica as bordas se não está estrapolando os 80% pedidos como requisito
      */
-    @Test(expected = RuntimeException.class)
+    @Test
     public void lucroPorcentagemMaiorTest() {
-        produto.setLucroPorcentagem(0.81);
+        assertThrows(RuntimeException.class, () -> {
+            produto.setLucroPorcentagem(0.81);
+        });
     }
 
     /**

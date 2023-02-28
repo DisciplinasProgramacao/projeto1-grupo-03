@@ -1,13 +1,11 @@
 package com.project;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class AppTest {
 
 //    @Test
     public void exampleTest() {
         System.out.println("Working");
-        Assert.fail();
     }
 }
