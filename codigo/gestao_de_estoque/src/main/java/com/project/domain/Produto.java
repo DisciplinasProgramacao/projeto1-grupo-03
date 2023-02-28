@@ -6,12 +6,12 @@ import lombok.Data;
 public class Produto {
     static double IMPOSTOS_PORCENTAGEM = 0.18;
 
-    String nome;
     String descricao;
     double precoCusto;
     double precoVenda;
     double lucroPorcentagem;
     int estoque;
+    int estoqueMinimo;
 
     /**
      * Lucro deve ser entre 30% e 80%
