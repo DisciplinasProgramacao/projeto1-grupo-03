@@ -32,4 +32,14 @@ public class Produto {
     public double getImpostos() {
         return (precoCusto * (1 + lucroPorcentagem)) * IMPOSTOS_PORCENTAGEM;
     }
+
+    
+    public String setDescricao(String descricao) {
+        if(descricao.length() >= 3) {
+            return (this.descricao = descricao);
+        }
+        else{
+           throw new RuntimeException("A descrição deve ter 3 ou mais caracteres.");
+        }
+    }
 }

@@ -48,4 +48,14 @@ public class ProdutoTest {
         double impostos = produto.getImpostos();
         assertEquals(13.5, impostos, 0.01);
     }
+
+    /*
+     * Verifica se a descrição tem no mínimo 3 caracteres
+     */
+
+     @Test
+     public void setDescricaoTest() {
+        assertThrows(RuntimeException.class, () -> {produto.setDescricao("aa");});
+    }
+
 }
