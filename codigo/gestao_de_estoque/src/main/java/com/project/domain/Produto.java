@@ -6,12 +6,12 @@ import lombok.Data;
 public class Produto {
     static double IMPOSTOS_PORCENTAGEM = 0.18;
 
-    String nome;
     String descricao;
     double precoCusto;
     double precoVenda;
     double lucroPorcentagem;
     int estoque;
+    int estoqueMinimo;
 
     /**
      * Lucro deve ser entre 30% e 80%
@@ -31,5 +31,25 @@ public class Produto {
      */
     public double getImpostos() {
         return (precoCusto * (1 + lucroPorcentagem)) * IMPOSTOS_PORCENTAGEM;
+    }
+
+    
+    public String setDescricao(String descricao) {
+        if(descricao.length() >= 3) {
+            return (this.descricao = descricao);
+        }
+        else{
+           throw new RuntimeException("A descrição deve ter 3 ou mais caracteres.");
+        }
+    }
+
+    public boolean checaEstoqueMinimo(int estoque, int estoqueMinimo) {
+        if(estoque < estoqueMinimo) {
+            return true;
+        }
+        else {
+            return false;
+        }
+
     }
 }

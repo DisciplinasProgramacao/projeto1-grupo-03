@@ -3,3 +3,6 @@ codigo/gestao_de_estoque/.idea
 codigo/gestao_de_estoque/target
 .idea
 target
+codigo/gestao_de_estoque/.vscode/launch.json
+/.DS_Store
+.project
