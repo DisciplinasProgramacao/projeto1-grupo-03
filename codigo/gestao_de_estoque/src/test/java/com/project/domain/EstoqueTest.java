@@ -19,13 +19,21 @@ public class EstoqueTest {
     }
 
     /***
+     * Testa se conseguimos adicionar um produto no estoque
+     */
+    @Test
+    public void adicionarProdutoTest() {
+        int quantidadeTotal = estoque.getQuantidadeProdutos();
+        assertEquals(22, quantidadeTotal);
+    }
+
+    /***
      * Testa se a quantidade de produtos está correta
      */
     @Test
-    public void getQuantidadeProdutosTest(Estoque estoque) {
-
-        double quantidadeTotal = getQuantidadeProdutos(estoque);
-        assertEquals(22, 20);
+    public void getQuantidadeProdutosTest() {
+        int quantidadeTotal = estoque.getQuantidadeProdutos();
+        assertEquals(22, quantidadeTotal);
     }
 
 

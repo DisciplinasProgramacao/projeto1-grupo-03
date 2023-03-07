@@ -13,7 +13,19 @@ public class Estoque {
         this.produtos = new ArrayList<>();
     }
 
-    public void setTamanhoMaximo() {
+    public void adicionarProduto(Produto produto) {
+        if (produtos.size() < tamanhoMaximo) {
+            produtos.add(produto);
+        } else {
+            throw new RuntimeException("Estoque cheio. Impossível adicionar produto.");
+        }
+    }
+
+    public void removerProduto(Produto produto) {
+        produtos.remove(produto);
+    }
+
+    public void setTamanhoMaximo(int tamanhoMaximo) {
         this.tamanhoMaximo = tamanhoMaximo;
     }
 
