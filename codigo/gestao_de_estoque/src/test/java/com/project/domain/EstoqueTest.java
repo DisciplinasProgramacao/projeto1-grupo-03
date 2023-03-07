@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class EstoqueTest {
+class EstoqueTest {
     
     private Estoque estoque;
 
@@ -22,48 +22,52 @@ public class EstoqueTest {
      * Testa se conseguimos adicionar um produto no estoque
      */
     @Test
-    public void adicionarProdutoTest() {
+    void adicionarProdutoTest() {
         Produto produto = new Produto("desc", 1.0, 0.5, 10, 5 );
         estoque.adicionarProduto(produto);  
-        assertEquals(1, 1);
+        assertEquals(1, estoque.getQuantidadeProdutos());
     }
 
     /***
      * Testa se a lista de produtos do estoque não aceita produtos a mais do máximo
      */
     @Test
-    public void adicionarProdutoAMaisTest() {
+    void adicionarProdutoAMaisTest() {
         Produto produto = new Produto("desc", 1.0, 0.5, 10, 5 );
         Produto produto2 = new Produto("desc", 1.0, 0.5, 10, 5 );
         estoque.adicionarProduto(produto);  
 
-        assertThrows(RuntimeException.class, () -> {estoque.adicionarProduto(produto2);});
+        assertThrows(RuntimeException.class, () ->
+            estoque.adicionarProduto(produto2)
+        );
     }
 
     /***
      * Testa uma remoção de produto possível
      */
     @Test
-    public void removerProdutoTest() {
+    void removerProdutoTest() {
         Produto produto = new Produto("desc", 1.0, 0.5, 10, 5 );
         estoque.adicionarProduto(produto);
         estoque.removerProduto(produto);
-        int quantidadeTotal = estoque.getQuantidadeProdutos();
-        assertEquals(0, quantidadeTotal);
+        assertEquals(0, estoque.getQuantidadeProdutos());
     }
 
     /***
      * Testa se a quantidade de produtos está correta
      */
     @Test
-    public void getQuantidadeProdutosTest() {
-        estoque = new Estoque(20);
-        for(int i = 0; i<20; i++) {
-        Produto produto = new Produto("desc", 1.0, 0.5, 10, 5 );
-        estoque.adicionarProduto(produto);
+    void getQuantidadeProdutosTest() {
+        int tamanhoMax = 20;
+        estoque = new Estoque(tamanhoMax);
+
+        for (int i = 0; i < tamanhoMax; i++) {
+            Produto produto = new Produto("desc", 1.0, 0.5, 10, 5 );
+            estoque.adicionarProduto(produto);
         }
+
         int quantidadeTotal = estoque.getQuantidadeProdutos();
-        assertEquals(20, quantidadeTotal);
+        assertEquals(tamanhoMax, quantidadeTotal);
     }
 
 
