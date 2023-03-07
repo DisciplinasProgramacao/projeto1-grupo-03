@@ -57,7 +57,19 @@ public class Produto {
         }
     }
 
+    private double getLucro() {
+    	return this.precoCusto * lucroPorcentagem;
+    }
+    
+    public double getPrecoVenda() {
+    	return getImpostos() + getLucro() + precoCusto;
+    }
+    
     public boolean checaEstoqueMinimo() {
         return this.estoque < this.estoqueMinimo;
     }
+
+	public void setPrecoCusto(int precoCusto) {
+		this.precoCusto = precoCusto;
+	}
 }

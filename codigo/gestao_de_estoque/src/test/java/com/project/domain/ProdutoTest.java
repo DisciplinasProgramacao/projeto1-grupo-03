@@ -57,6 +57,16 @@ public class ProdutoTest {
      public void setDescricaoTest() {
         assertThrows(RuntimeException.class, () -> {produto.setDescricao("aa");});
     }
+     
+    
+    @Test
+    public void getPrecoVendaTest() {
+        produto.setLucroPorcentagem(0.5);
+        produto.setPrecoCusto(50);
+    	double venda = produto.getPrecoVenda();
+    	assertEquals(88.5, venda, 0.01);
+    }
+
 
     /*
      * Verifica se o estoqueMinimo não é ativado ao chegar no minimo
