@@ -34,9 +34,9 @@ public class Produto {
     }
 
     
-    public String setDescricao(String descricao) {
+    public void setDescricao(String descricao) {
         if(descricao.length() >= 3) {
-            return (this.descricao = descricao);
+            this.descricao = descricao;
         }
         else{
            throw new RuntimeException("A descrição deve ter 3 ou mais caracteres.");
