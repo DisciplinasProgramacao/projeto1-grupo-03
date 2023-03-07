@@ -3,6 +3,8 @@ package com.project.domain;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -70,5 +72,17 @@ class EstoqueTest {
         assertEquals(tamanhoMax, quantidadeTotal);
     }
 
+    @Test
+    void testGetProdutosAbaixoDoMinimo() {
+        estoque = new Estoque(5);
+        Produto produto = new Produto("desc1", 1.0, 0.5, 10, 10 );
+        Produto produto2 = new Produto("desc2", 1.0, 0.5, 3, 1 );
+
+        estoque.adicionarProduto(produto);
+        estoque.adicionarProduto(produto2);
+
+        List<Produto> produtosAbaixoDoMinimo = estoque.getProdutosAbaixoDoMinimo();
+        assertEquals(1, produtosAbaixoDoMinimo.size());
+    }
 
 }

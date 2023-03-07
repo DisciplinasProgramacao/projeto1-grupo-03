@@ -1,9 +1,12 @@
 package com.project.domain;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import lombok.Data;
 
+@Data
 public class Estoque {
     private int tamanhoMaximo;
     private List<Produto> produtos;
@@ -31,6 +34,21 @@ public class Estoque {
 
     public int getQuantidadeProdutos() {
         return produtos.size();
+    }
+
+    public List<Produto> getProdutosAbaixoDoMinimo() {
+        List<Produto> produtoAbaixoDoMinimo = new ArrayList<>();
+        for (int i = 0; i < this.produtos.size(); i++) {
+            Produto produto = this.produtos.get(i);
+            if (produto.checaEstoqueMinimo()) {
+                produtoAbaixoDoMinimo.add(produto);
+            }
+        }
+        return produtoAbaixoDoMinimo;
+
+//        return this.produtos.stream()
+//                .filter(Produto::checaEstoqueMinimo)
+//                .collect(Collectors.toList());
     }
 
 }
