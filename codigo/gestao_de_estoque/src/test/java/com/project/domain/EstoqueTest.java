@@ -25,7 +25,7 @@ public class EstoqueTest {
     public void adicionarProdutoTest() {
         Produto produto = new Produto("desc", 1.0, 0.5, 10, 5 );
         estoque.adicionarProduto(produto);  
-        assertEquals(1, 1);
+        assertEquals(1, estoque.getQuantidadeProdutos());
     }
 
     /***

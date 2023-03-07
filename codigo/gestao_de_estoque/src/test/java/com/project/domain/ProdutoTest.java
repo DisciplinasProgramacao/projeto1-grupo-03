@@ -15,7 +15,7 @@ public class ProdutoTest {
      */
     @BeforeEach
     public void setUp() {
-        produto = new Produto();
+        produto = new Produto("desc", 1.0, 0.5, 10, 5 );
     }
 
     /**
