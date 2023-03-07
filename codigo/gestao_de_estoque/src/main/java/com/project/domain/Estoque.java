@@ -13,16 +13,12 @@ public class Estoque {
         this.produtos = new ArrayList<>();
     }
 
-    public int getQuantidadeProdutos() {
-        return produtos.size();
+    public void setTamanhoMaximo() {
+        this.tamanhoMaximo = tamanhoMaximo;
     }
 
-    public double getValorTotalEstoque() {
-        double valorTotal = 0.0;
-        for (Produto produto : produtos) {
-            valorTotal += produto.getPrecoCusto() * produto.getEstoque();
-        }
-        return valorTotal;
+    public int getQuantidadeProdutos() {
+        return produtos.size();
     }
 
 }

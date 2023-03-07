@@ -18,4 +18,15 @@ public class EstoqueTest {
         estoque = new Estoque(20);
     }
 
+    /***
+     * Testa se a quantidade de produtos está correta
+     */
+    @Test
+    public void getQuantidadeProdutosTest(Estoque estoque) {
+
+        double quantidadeTotal = getQuantidadeProdutos(estoque);
+        assertEquals(22, 20);
+    }
+
+
 }
