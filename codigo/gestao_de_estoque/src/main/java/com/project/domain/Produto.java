@@ -8,10 +8,25 @@ public class Produto {
 
     String descricao;
     double precoCusto;
-    double precoVenda;
     double lucroPorcentagem;
-    int estoque;
+    int estoque = 0;
     int estoqueMinimo;
+    double valorArrecadadoVenda = 0;
+    int quantidadeVendida = 0;
+    double valorGastoCompra = 0;
+    int quantidadeComprada = 0;
+
+    public Produto(String descricao, double precoCusto, double lucroPorcentagem, int estoqueMinimo, int estoque) {
+        this(descricao, precoCusto, lucroPorcentagem, estoqueMinimo);
+        this.estoque = estoque;
+    }
+
+    public Produto(String descricao, double precoCusto, double lucroPorcentagem, int estoqueMinimo) {
+        this.setDescricao(descricao);
+        this.precoCusto = precoCusto;
+        this.setLucroPorcentagem(lucroPorcentagem);
+        this.estoqueMinimo = estoqueMinimo;
+    }
 
     /**
      * Lucro deve ser entre 30% e 80%
@@ -43,13 +58,7 @@ public class Produto {
         }
     }
 
-    public boolean checaEstoqueMinimo(int estoque, int estoqueMinimo) {
-        if(estoque < estoqueMinimo) {
-            return true;
-        }
-        else {
-            return false;
-        }
-
+    public boolean checaEstoqueMinimo() {
+        return this.estoque < this.estoqueMinimo;
     }
 }
