@@ -51,4 +51,17 @@ public class Estoque {
 //                .collect(Collectors.toList());
     }
 
+    public double getValorTotalEstoque() {
+    	double valorTotal = 0;
+    	for (int i = 0; i < this.produtos.size(); i++) {
+            Produto produto = this.produtos.get(i);
+            valorTotal += produto.getPrecoVenda() * produto.estoque;
+        }
+    	return valorTotal;
+    }
+    
 }
+
+
+
+

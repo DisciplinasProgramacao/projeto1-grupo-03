@@ -71,7 +71,7 @@ class EstoqueTest {
         int quantidadeTotal = estoque.getQuantidadeProdutos();
         assertEquals(tamanhoMax, quantidadeTotal);
     }
-
+    
     @Test
     void testGetProdutosAbaixoDoMinimo() {
         estoque = new Estoque(5);
@@ -84,5 +84,22 @@ class EstoqueTest {
         List<Produto> produtosAbaixoDoMinimo = estoque.getProdutosAbaixoDoMinimo();
         assertEquals(1, produtosAbaixoDoMinimo.size());
     }
+    
+    
+    /**
+     * Testa se o valor total do estoque está correto
+     */
+    @Test
+    void testGetValorTotalEstoque() {
+        estoque = new Estoque(5);
+        Produto produto = new Produto("desc1", 1.0, 0.5, 10, 10 ); //17,70
+        Produto produto2 = new Produto("desc2", 10.0, 0.5, 3, 1 ); //17,70
 
+        estoque.adicionarProduto(produto);
+        estoque.adicionarProduto(produto2);
+
+        double valorTotal = estoque.getValorTotalEstoque();
+        assertEquals(35.4, valorTotal, 0.01);
+    }
+    
 }
