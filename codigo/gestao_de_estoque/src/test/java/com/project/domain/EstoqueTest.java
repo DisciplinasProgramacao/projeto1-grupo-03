@@ -25,7 +25,7 @@ class EstoqueTest {
      */
     @Test
     void adicionarProdutoTest() {
-        Produto produto = new Produto("desc", 1.0, 0.5, 10, 5 );
+        Produto produto = new Produto(1, "desc", 1.0, 0.5, 10, 5 );
         estoque.adicionarProduto(produto);  
         assertEquals(1, estoque.getQuantidadeProdutos());
     }
@@ -35,8 +35,8 @@ class EstoqueTest {
      */
     @Test
     void adicionarProdutoAMaisTest() {
-        Produto produto = new Produto("desc", 1.0, 0.5, 10, 5 );
-        Produto produto2 = new Produto("desc", 1.0, 0.5, 10, 5 );
+        Produto produto = new Produto(1, "desc", 1.0, 0.5, 10, 5 );
+        Produto produto2 = new Produto(2, "desc", 1.0, 0.5, 10, 5 );
         estoque.adicionarProduto(produto);  
 
         assertThrows(RuntimeException.class, () ->
@@ -49,7 +49,7 @@ class EstoqueTest {
      */
     @Test
     void removerProdutoTest() {
-        Produto produto = new Produto("desc", 1.0, 0.5, 10, 5 );
+        Produto produto = new Produto(1, "desc", 1.0, 0.5, 10, 5 );
         estoque.adicionarProduto(produto);
         estoque.removerProduto(produto);
         assertEquals(0, estoque.getQuantidadeProdutos());
@@ -64,7 +64,7 @@ class EstoqueTest {
         estoque = new Estoque(tamanhoMax);
 
         for (int i = 0; i < tamanhoMax; i++) {
-            Produto produto = new Produto("desc", 1.0, 0.5, 10, 5 );
+            Produto produto = new Produto(1, "desc", 1.0, 0.5, 10, 5 );
             estoque.adicionarProduto(produto);
         }
 
@@ -75,8 +75,8 @@ class EstoqueTest {
     @Test
     void testGetProdutosAbaixoDoMinimo() {
         estoque = new Estoque(5);
-        Produto produto = new Produto("desc1", 1.0, 0.5, 10, 10 );
-        Produto produto2 = new Produto("desc2", 1.0, 0.5, 3, 1 );
+        Produto produto = new Produto(1, "desc1", 1.0, 0.5, 10, 10 );
+        Produto produto2 = new Produto(2, "desc2", 1.0, 0.5, 3, 1 );
 
         estoque.adicionarProduto(produto);
         estoque.adicionarProduto(produto2);
@@ -92,8 +92,8 @@ class EstoqueTest {
     @Test
     void testGetValorTotalEstoque() {
         estoque = new Estoque(5);
-        Produto produto = new Produto("desc1", 1.0, 0.5, 10, 10 ); //17,70
-        Produto produto2 = new Produto("desc2", 10.0, 0.5, 3, 1 ); //17,70
+        Produto produto = new Produto(1, "desc1", 1.0, 0.5, 10, 10 ); //17,70
+        Produto produto2 = new Produto(2, "desc2", 10.0, 0.5, 3, 1 ); //17,70
 
         estoque.adicionarProduto(produto);
         estoque.adicionarProduto(produto2);

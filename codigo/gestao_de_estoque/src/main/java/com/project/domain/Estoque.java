@@ -55,9 +55,19 @@ public class Estoque {
     	double valorTotal = 0;
     	for (int i = 0; i < this.produtos.size(); i++) {
             Produto produto = this.produtos.get(i);
-            valorTotal += produto.getPrecoVenda() * produto.estoque;
+            valorTotal += produto.getPrecoVenda() * produto.getEstoque();
         }
     	return valorTotal;
+    }
+
+    // Checa a  lista de produtos buscando pelo produto com o id inserido
+    public Produto getProdutoPeloId(int id) {
+        for (Produto produto : produtos) {
+            if (produto.getId() == id) {
+                return produto;
+            }
+        }
+        return null;
     }
     
 }

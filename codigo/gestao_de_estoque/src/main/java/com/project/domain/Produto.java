@@ -4,28 +4,32 @@ import lombok.Data;
 
 @Data
 public class Produto {
-    static final double IMPOSTOS_PORCENTAGEM = 0.18;
+    private static final double IMPOSTOS_PORCENTAGEM = 0.18;
 
-    String descricao;
-    double precoCusto;
-    double lucroPorcentagem;
-    int estoque = 0;
-    int estoqueMinimo;
-    double valorArrecadadoVenda = 0;
-    int quantidadeVendida = 0;
-    double valorGastoCompra = 0;
-    int quantidadeComprada = 0;
+    private static final int id = 1;
+    private String descricao;
+    private double precoCusto;
+    private double lucroPorcentagem;
+    private int estoque = 0;
+    private int estoqueMinimo;
+    private double valorArrecadadoVenda = 0;
+    private int quantidadeVendida = 0;
+    private double valorGastoCompra = 0;
+    private int quantidadeComprada = 0;
 
-    public Produto(String descricao, double precoCusto, double lucroPorcentagem, int estoqueMinimo, int estoque) {
-        this(descricao, precoCusto, lucroPorcentagem, estoqueMinimo);
+    public Produto(int id, String descricao, double precoCusto, double lucroPorcentagem, int estoqueMinimo, int estoque) {
+        this(id, descricao, precoCusto, lucroPorcentagem, estoqueMinimo);
         this.estoque = estoque;
+        id++;
     }
 
-    public Produto(String descricao, double precoCusto, double lucroPorcentagem, int estoqueMinimo) {
+    public Produto(int id, String descricao, double precoCusto, double lucroPorcentagem, int estoqueMinimo) {
+        this.id = id;
         this.setDescricao(descricao);
         this.precoCusto = precoCusto;
         this.setLucroPorcentagem(lucroPorcentagem);
         this.estoqueMinimo = estoqueMinimo;
+        id++;
     }
 
     /**
@@ -47,6 +51,10 @@ public class Produto {
         return (precoCusto * (1 + lucroPorcentagem)) * IMPOSTOS_PORCENTAGEM;
     }
 
+    /**
+     * Garante que a descrição tenha 3 ou mais caracteres
+     * @param descricao
+     */
     
     public void setDescricao(String descricao) {
         if(descricao.length() >= 3) {
@@ -72,4 +80,15 @@ public class Produto {
 	public void setPrecoCusto(int precoCusto) {
 		this.precoCusto = precoCusto;
 	}
+
+    public void entradaDeProduto (int quantidadeComprada, double precoCusto) {
+        this.quantidadeComprada += quantidadeComprada;
+        this.valorGastoCompra += (precoCusto * quantidadeComprada);
+    }
+
+    public void saidaDeProduto (int quantidadeVendida) {
+        this.quantidadeVendida += quantidadeVendida;
+        this.valorArrecadadoVenda += (getPrecoVenda() * quantidadeVendida);
+    }
+
 }
