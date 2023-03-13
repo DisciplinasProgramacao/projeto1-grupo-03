@@ -75,6 +75,14 @@ public class Estoque {
     	Produto produto = getProdutoPeloId(id);
     	System.out.println(produto.getDescricaoCompleta());
     }
+
+    public void reporEstoque(){
+        int id;
+        System.out.println("qual produto você deseja repor?");
+        id = reporEstoque.nextLine();
+        getProdutoPeloId(id);
+
+    }
 }
     
 
