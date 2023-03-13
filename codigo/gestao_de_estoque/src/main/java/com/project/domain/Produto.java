@@ -82,14 +82,16 @@ public class Produto {
 		this.precoCusto = precoCusto;
 	}
 
-    public void entradaDeProduto (int quantidadeComprada, double precoCusto) {
+    public void entradaDeProduto (Produto produto, int quantidadeComprada, double precoCusto) {
         this.quantidadeComprada += quantidadeComprada;
         this.valorGastoCompra += (precoCusto * quantidadeComprada);
+        this.estoque += quantidadeComprada;
     }
 
-    public void saidaDeProduto (int quantidadeVendida) {
+    public void saidaDeProduto (Produto produto, int quantidadeVendida) {
         this.quantidadeVendida += quantidadeVendida;
         this.valorArrecadadoVenda += (getPrecoVenda() * quantidadeVendida);
+        this.estoque -= quantidadeVendida;
     }
 
     
