@@ -17,6 +17,10 @@ public class Estoque {
         this.produtos = new ArrayList<>();
     }
 
+    /**
+     * Adiciona produto no estoque
+     * @param produto
+     */
     public void adicionarProduto(Produto produto) {
         if (produtos.size() < tamanhoMaximo) {
             produtos.add(produto);
@@ -25,18 +29,27 @@ public class Estoque {
         }
     }
 
+    /**
+     * @param produto removido do estoque
+     */
     public void removerProduto(Produto produto) {
         produtos.remove(produto);
     }
 
-    public void setTamanhoMaximo(int tamanhoMaximo) {
+    private void setTamanhoMaximo(int tamanhoMaximo) {
         this.tamanhoMaximo = tamanhoMaximo;
     }
 
+    /**
+     * @return Quantos produtos cadastrados no estoque
+     */
     public int getQuantidadeProdutos() {
         return produtos.size();
     }
 
+    /**
+     * @return todos os produtos que estão abaixo do estoque mínimo
+     */
     public List<Produto> getProdutosAbaixoDoMinimo() {
         List<Produto> produtoAbaixoDoMinimo = new ArrayList<>();
         for (int i = 0; i < this.produtos.size(); i++) {
@@ -52,6 +65,9 @@ public class Estoque {
 //                .collect(Collectors.toList());
     }
 
+    /**
+     * @return valor do estoque de todos os produtos
+     */
     public double getValorTotalEstoque() {
     	double valorTotal = 0;
     	for (int i = 0; i < this.produtos.size(); i++) {
@@ -60,8 +76,12 @@ public class Estoque {
         }
     	return valorTotal;
     }
-    
-    // Checa a  lista de produtos buscando pelo produto com o id inserido
+
+    /**
+     * Checa a lista de produtos buscando pelo produto com o id inserido
+     * @param id
+     * @return
+     */
     public Produto getProdutoPeloId(int id) {
         for (Produto produto : produtos) {
             if (produto.getId() == id) {
@@ -70,13 +90,20 @@ public class Estoque {
         }
         return null;
     }
-    
-    
+
+
+    /**
+     * Consulta um produto pelo seu id
+     * @param id
+     */
     public void consultaProduto(int id) {
     	Produto produto = getProdutoPeloId(id);
     	System.out.println(produto.getDescricaoCompleta());
     }
 
+    /**
+     * Repõe o estoque do produto
+     */
     public void reporEstoque(){
         Scanner lerId = new Scanner(System.in);
         Scanner lerQtndProduto = new Scanner(System.in);
@@ -84,7 +111,7 @@ public class Estoque {
         int id, qtndProduto;
         double precoProduto;
         System.out.println("qual o ID do produto você deseja repor?");
-        id = id.nextInt();
+        id = lerId.nextInt();
         System.out.println("qual a quantidade desse produto?");
         qtndProduto = lerQtndProduto.nextInt();
         System.out.println("qual o preço desse produto?");
@@ -93,15 +120,47 @@ public class Estoque {
         produto.entradaDeProduto(produto, qtndProduto, precoProduto);
     }
 
+    /**
+     * Retira produto do estoque
+     */
     public void retirarDoEstoque(){
         Scanner lerId = new Scanner(System.in);
         int id;
         System.out.println("qual o ID do produto você deseja retirar do estoque?");
-        id = id.nextInt();
+        id = lerId.nextInt();
         Produto produto = getProdutoPeloId(id);
-        produto.removerProduto();
+        this.removerProduto(produto);
     }
-    //asdfg
+
+    /**
+     * Exibe balnço total do estoque
+     */
+    public void exibirBalanco() {
+        double valorEstoque = produtos.stream()
+                .map(produto -> produto.getPrecoVenda() * produto.getEstoque())
+                .reduce(Double::sum)
+                .orElse(0D);
+
+        double valorVendido = produtos.stream()
+                .map(Produto::getValorArrecadado)
+                .reduce(Double::sum)
+                .orElse(0D);
+
+
+        double valorPedidos = produtos.stream()
+                .map(Produto::getValorGastoCompra)
+                .reduce(Double::sum)
+                .orElse(0D);
+
+        StringBuilder res = new StringBuilder()
+                .append("Valor estoque: " + valorEstoque)
+                .append("\n")
+                .append("Valor vendido: " + valorVendido)
+                .append("\n")
+                .append("Valor de pedidos: " + valorPedidos);
+
+        System.out.println(res);
+    }
 }
     
 

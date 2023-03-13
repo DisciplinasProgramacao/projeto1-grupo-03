@@ -65,6 +65,7 @@ public class App {
                     break;
                 case 5:
                     System.out.println("Você selecionou a opção 5 - Exibir demonstrativo.");
+                    estoque.exibirBalanco();
                     break;
                 case 6:
                     System.out.println("Saindo...");
