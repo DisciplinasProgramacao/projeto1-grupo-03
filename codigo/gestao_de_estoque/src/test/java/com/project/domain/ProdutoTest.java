@@ -14,7 +14,7 @@ class ProdutoTest {
      */
     @BeforeEach
     public void setUp() {
-        produto = new Produto("desc", 1.0, 0.5, 10, 5 );
+        produto = new Produto(1, "desc", 1.0, 0.5, 10, 5 );
     }
 
     /**
@@ -73,8 +73,8 @@ class ProdutoTest {
     @Test
     void checaEstoqueNoMinimoTest() {
         produto.setEstoqueMinimo(5);
-        produto.setEstoque(2);
-        assertTrue(produto.checaEstoqueMinimo());
+        produto.setEstoque(5);
+        assertFalse(produto.checaEstoqueMinimo());
     }
 
     /*
@@ -82,6 +82,8 @@ class ProdutoTest {
      */
     @Test
     void checaEstoqueAbaixoDoMinimoTest() {
+        produto.setEstoqueMinimo(5);
+        produto.setEstoque(4);
         assertTrue(produto.checaEstoqueMinimo());
     }
 }
