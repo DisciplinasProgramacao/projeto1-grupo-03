@@ -100,6 +100,7 @@ public class Estoque {
         Produto produto = getProdutoPeloId(id);
         produto.removerProduto();
     }
+    //asdfg
 }
     
 
