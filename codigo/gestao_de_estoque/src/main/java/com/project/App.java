@@ -56,9 +56,12 @@ public class App {
                     break;
                 case 3:
                     System.out.println("Você selecionou a opção 3 - Consultar o estoque.");
+                    estoque.descricaoCompleta();
                     break;
                 case 4:
-                    System.out.println("Você selecionou a opção 4 - Consultar um problema.");
+                    System.out.println("Você selecionou a opção 4 - Consultar um produto.");
+                    System.out.println("Digite o Id do produto que deseja consultar:");
+                    estoque.consultaProduto(scannerID());
                     break;
                 case 5:
                     System.out.println("Você selecionou a opção 5 - Exibir demonstrativo.");

@@ -86,9 +86,19 @@ public class Estoque {
     	System.out.println(produto.getDescricaoCompleta());
     }
 	
+    private String converteLista() {
+    		List<Produto> conversor = this.getProdutosAbaixoDoMinimo();
+    		String convertido;
+    		for (int i = 0; i < conversor.size(); i++) {
+                Produto produto = conversor.get(i);
+                convertido += "" + produto.getDescricao() + " - " + produto.getId();
+            }
+    		
+    		return convertido;
+    }
 
-	public String descricaoCompleta() {
-		return("Quantidade de Tipos de Produtos em Estoque: " + this.getQuantidadeProdutos() + "\nQuantidade de Produtos em Estoque: " + this.getQuantidadeProdutosTotal() + "\nValor Total do Estoque: " + this.getValorTotalEstoque() + "\nProdutos com Estoque Abaixo do Mínimo: " + this.getProdutosAbaixoDoMinimo());
+	public void descricaoCompleta() {
+		System.out.printf("Quantidade de Tipos de Produtos em Estoque: " + this.getQuantidadeProdutos() + "\nQuantidade de Produtos em Estoque: " + this.getQuantidadeProdutosTotal() + "\nValor Total do Estoque: R$%.2f\nProdutos com Estoque Abaixo do Mínimo: " + this.getProdutosAbaixoDoMinimo(), this.getValorTotalEstoque());
 	}
 }
     
