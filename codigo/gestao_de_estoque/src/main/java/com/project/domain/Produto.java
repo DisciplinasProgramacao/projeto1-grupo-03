@@ -66,6 +66,10 @@ public class Produto {
         }
     }
 
+    int getId() {
+        return this.id;
+    }
+
     private double getLucro() {
     	return this.precoCusto * lucroPorcentagem;
     }
@@ -82,55 +86,16 @@ public class Produto {
 		this.precoCusto = precoCusto;
 	}
 
-    public void entradaDeProduto (int quantidadeComprada, double precoCusto) {
+    public void entradaDeProduto (Produto produto, int quantidadeComprada, double precoCusto) {
         this.quantidadeComprada += quantidadeComprada;
         this.valorGastoCompra += (precoCusto * quantidadeComprada);
+        this.estoque += quantidadeComprada;
     }
 
-    public void saidaDeProduto (int quantidadeVendida) {
+    public void saidaDeProduto (Produto produto, int quantidadeVendida) {
         this.quantidadeVendida += quantidadeVendida;
         this.valorArrecadadoVenda += (getPrecoVenda() * quantidadeVendida);
+        this.estoque -= quantidadeVendida;
     }
-
-    
-    public String getDescricaoCompleta() {
-    	return ("Produto: " + this.getDescricao() + "\nPreço de Custo: " + this.getPrecoCusto() + "\nPreço de Venda: " + this.getPrecoVenda() + "\nPorcentagem de Lucro: " + this.getLucroPorcentagem() + "Estoque: " + this.getEstoque() + "\nEstoque Minimo: " + this.getEstoqueMinimo() + "\nValor Arrecadado: " + this.getValorArrecadado() + "\nQuantidade Vendida: " + this.getQuantidadeVendida() + "\nValor Gasto Aquisição: " + this.getValorGastoCompra() + "\nQuantidade Comprada: " + this.getQuantidadeComprada());
-    }
-
-	private int getQuantidadeComprada() {
-		return this.quantidadeComprada;
-	}
-
-	private double getValorGastoCompra() {
-		return this.valorGastoCompra;
-	}
-
-	private int getQuantidadeVendida() {
-		return this.quantidadeVendida;
-	}
-
-	private double getValorArrecadado() {
-		return this.valorArrecadadoVenda;
-	}
-
-	private int getEstoqueMinimo() {
-		return this.estoqueMinimo;
-	}
-
-	public int getEstoque() {
-		return this.estoque;
-	}
-
-	private double getLucroPorcentagem() {
-		return this.lucroPorcentagem;
-	}
-
-	private double getPrecoCusto() {
-		return this.precoCusto;
-	}
-
-	private String getDescricao() {
-		return this.descricao;
-	}
 
 }

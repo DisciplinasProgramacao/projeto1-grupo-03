@@ -4,6 +4,7 @@ import java.util.Scanner;
 import com.project.domain.Estoque;
 import com.project.domain.Produto;
 
+
 public class App {
     public static void main(String[] args) {
         
@@ -41,9 +42,9 @@ public class App {
             switch (escolha) {
                 case 1:
                     System.out.println("Você selecionou a opção 1.");
-                    // registrarVenda();
-
-                    break;
+                    registrarVenda(estoque);
+                    System.out.print(p2.getEstoque());
+                    continue;
                 case 2:
                     System.out.println("Você selecionou a opção 2.");
                     break;
@@ -51,42 +52,38 @@ public class App {
                     System.out.println("Você selecionou a opção 3.");
                     break;
                 case 4:
-                	System.out.println("Qual o id do produto que deseja consultar?");
-                    estoque.consultaProduto(scannerID());
+                    System.out.println("Você selecionou a opção 4.");
                     break;
                 case 5:
                     System.out.println("Você selecionou a opção 5.");
                     break;
                 case 6:
                     System.out.println("Saindo...");
-                    break;
                 default:
                     System.out.println("Opção inválida. Tente novamente.");
                     break;
             }
         } while (escolha != 6);
-        scanner.close();
-    
-    
-    }
-/**
-    public static void registrarVenda() {
-        Scanner idScan = new Scanner(System.in);
-        int idProduto = 0;
-        System.out.println("Qual o id do produto vendido?");
-        idProduto = idScan.nextInt();
-        estoque.getProdutoPeloId(idProduto);
-
-    }
-
- */
-    
-    public static int scannerID() {
-    	Scanner idScan = new Scanner(System.in);
-        int idProduto = 0;
-        idProduto = idScan.nextInt();
-        idScan.close();
-        return idProduto;
         
     }
+
+    public static void registrarVenda(Estoque estoque) {
+        Scanner idScan = new Scanner(System.in);
+        Scanner quantProdScan = new Scanner (System.in);
+        int idProduto = 0;
+        int quantidadeVendida = 0;
+        System.out.println("Qual o id do produto vendido?");
+        idProduto = idScan.nextInt();
+        System.out.println("Qual a quantidade de produtos vendidos?");
+        quantidadeVendida = quantProdScan.nextInt();
+        Produto produto = estoque.getProdutoPeloId(idProduto);
+        produto.saidaDeProduto(estoque.getProdutoPeloId(idProduto), quantidadeVendida);
+        idScan.close();
+        quantProdScan.close();
+        System.out.print(quantidadeVendida + " itens foram debitados do estoque;");
+
+
+    }
+
+ 
 }
