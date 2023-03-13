@@ -131,7 +131,7 @@ public class Produto {
 		return this.precoCusto;
 	}
 
-	private String getDescricao() {
+	public String getDescricao() {
 		return this.descricao;
 	}
 
