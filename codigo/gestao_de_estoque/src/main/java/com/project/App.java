@@ -32,7 +32,6 @@ public class App {
         int escolha = 0;
 
         do {
-            escolha = 0;
             System.out.println("Selecione uma opção:");
             System.out.println("1. Registrar venda");
             System.out.println("2. Registrar pedido de produtos");
@@ -41,9 +40,12 @@ public class App {
             System.out.println("5. Exibir balanço");
             System.out.println("6. Sair");
 
-            escolha = scanner.nextInt();
+            scanner.hasNextInt();
+            if(scanner.hasNextInt() )
+                escolha = scanner.nextInt(); // if there is another number
+            else
+                escolha = 6; // nothing added in the input
 
-            
             switch (escolha) {
                 case 1:
                     System.out.println("Você selecionou a opção 1 - Venda de produto.");
@@ -51,20 +53,19 @@ public class App {
                     break;
                 case 2:
                     System.out.println("Você selecionou a opção 2 - Registro de entrada de produtos.");
-                    registrarPedido(estoque);
-                    System.out.print(p2.getEstoque());
                     break;
                 case 3:
                     System.out.println("Você selecionou a opção 3 - Consultar o estoque.");
-
+                    estoque.descricaoCompleta();
                     break;
                 case 4:
                     System.out.println("Você selecionou a opção 4 - Consultar um produto.");
                     System.out.println("Digite o Id do produto que deseja consultar:");
-                    estoque.consultaProduto(scannerID());
+                    estoque.consultaProduto(scanner.nextInt());
                     break;
                 case 5:
-                    System.out.println("Você selecionou a opção 5 - Exibir demonstrativo.");
+                    System.out.println("Você selecionou a opção 5 - Exibir balanço.");
+                    estoque.exibirBalanco();
                     break;
                 case 6:
                     System.out.println("Saindo...");
@@ -74,7 +75,7 @@ public class App {
                     break;
             }
         } while (escolha != 6);
-        
+
     }
 
     public static void registrarVenda(Estoque estoque) {
@@ -87,40 +88,12 @@ public class App {
         System.out.println("Qual a quantidade de produtos vendidos?");
         quantidadeVendida = quantProdScan.nextInt();
         Produto produto = estoque.getProdutoPeloId(idProduto);
-        produto.saidaDeProduto(produto, quantidadeVendida);
+        produto.saidaDeProduto(estoque.getProdutoPeloId(idProduto), quantidadeVendida);
         idScan.close();
         quantProdScan.close();
         System.out.println(quantidadeVendida + " itens foram debitados do estoque;");
+
     }
 
-    public static void registrarPedido(Estoque estoque) {
-        Scanner idScan = new Scanner(System.in);
-        Scanner quantProdScan = new Scanner (System.in);
-        Scanner precoCustoScan = new Scanner (System.in);
-        int idProduto = 0;
-        int quantidadeComprada = 0;
-        double precoCusto = 0.0;
-        System.out.println("Qual o id do produto comprado?");
-        idProduto = idScan.nextInt();
-        System.out.println("Qual a quantidade de produtos comprados?");
-        quantidadeComprada = quantProdScan.nextInt();
-        System.out.println("Qual a preço do produto comprados");
-        precoCusto = precoCustoScan.nextDouble(); 
-        Produto produto = estoque.getProdutoPeloId(idProduto);
-        produto.entradaDeProduto(produto, quantidadeComprada, precoCusto);
-        idScan.close();
-        quantProdScan.close();
-        precoCustoScan.close();
-        System.out.println(quantidadeComprada + " unidades foram adicionadas ao estoque;");
-    }
-
-    public static int scannerID() {
-    	Scanner idScan = new Scanner(System.in);
-        int idProduto = 0;
-        idProduto = idScan.nextInt();
-        idScan.close();
-        return idProduto;
-        
-    }
  
 }
