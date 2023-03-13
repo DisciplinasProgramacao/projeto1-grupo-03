@@ -77,11 +77,19 @@ public class Estoque {
     }
 
     public void reporEstoque(){
-        int id;
+        Scanner lerId = new Scanner(System.in);
+        Scanner lerQtndProduto = new Scanner(System.in);
+        Scanner lerPrecoProduto = new Scanner(System.in);
+        int id, qtndProduto;
+        double precoProduto;
         System.out.println("qual produto você deseja repor?");
-        id = reporEstoque.nextLine();
-        getProdutoPeloId(id);
-
+        id = id.nextInt();
+        System.out.println("qual a quantidade desse produto?");
+        qtndProduto = lerQtndProduto.nextInt();
+        System.out.println("qual o preço desse produto?");
+        precoProduto = lerPrecoProduto.nextDouble();
+        Produto produto = getProdutoPeloId(id);
+        produto.entradaDeProduto(produto, qtndProduto, precoProduto);
     }
 }
     
