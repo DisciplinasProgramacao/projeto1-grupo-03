@@ -82,7 +82,7 @@ public class Estoque {
         Scanner lerPrecoProduto = new Scanner(System.in);
         int id, qtndProduto;
         double precoProduto;
-        System.out.println("qual produto você deseja repor?");
+        System.out.println("qual o ID do produto você deseja repor?");
         id = id.nextInt();
         System.out.println("qual a quantidade desse produto?");
         qtndProduto = lerQtndProduto.nextInt();
@@ -90,6 +90,15 @@ public class Estoque {
         precoProduto = lerPrecoProduto.nextDouble();
         Produto produto = getProdutoPeloId(id);
         produto.entradaDeProduto(produto, qtndProduto, precoProduto);
+    }
+
+    public void retirarDoEstoque(){
+        Scanner lerId = new Scanner(System.in);
+        int id;
+        System.out.println("qual o ID do produto você deseja retirar do estoque?");
+        id = id.nextInt();
+        Produto produto = getProdutoPeloId(id);
+        produto.removerProduto();
     }
 }
     
