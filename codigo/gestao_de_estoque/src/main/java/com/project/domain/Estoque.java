@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.Scanner;
 
 import lombok.Data;
 
@@ -80,10 +81,11 @@ public class Estoque {
         Scanner lerId = new Scanner(System.in);
         Scanner lerQtndProduto = new Scanner(System.in);
         Scanner lerPrecoProduto = new Scanner(System.in);
-        int id, qtndProduto;
-        double precoProduto;
+        int id = 0;
+        int qtndProduto = 0;
+        double precoProduto = 0;
         System.out.println("qual produto você deseja repor?");
-        id = id.nextInt();
+        id = lerId.nextLine();
         System.out.println("qual a quantidade desse produto?");
         qtndProduto = lerQtndProduto.nextInt();
         System.out.println("qual o preço desse produto?");
@@ -91,6 +93,23 @@ public class Estoque {
         Produto produto = getProdutoPeloId(id);
         produto.entradaDeProduto(produto, qtndProduto, precoProduto);
     }
+
+    public String converteLista() {
+        List<Produto> conversor = this.getProdutosAbaixoDoMinimo();
+        String convertido;
+        for (int i = 0; i < conversor.size(); i++) {
+            Produto produto = conversor.get(i);
+            convertido += "" + produto.getDescricao() + " - " + produto.getId();
+        }
+        
+        return convertido;
+
+    }
+
+    public void descricaoCompleta() {
+        System.out.printf("Quantidade de Tipos de Produtos em Estoque: " + this.getQuantidadeProdutos() + "\nQuantidade de Produtos em Estoque: " + this.getQuantidadeProdutosTotal() + "\nValor Total do Estoque: R$%.2f\nProdutos com Estoque Abaixo do Mínimo: " + this.getProdutosAbaixoDoMinimo(), this.getValorTotalEstoque());
+    }
+
 }
     
 
