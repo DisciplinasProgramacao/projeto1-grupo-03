@@ -30,6 +30,7 @@ public class App {
         estoque.adicionarProduto(p9);
         Scanner scanner = new Scanner(System.in);
         int escolha = 0;
+
         do {
             System.out.println("Selecione uma opção:");
             System.out.println("1. Registrar venda");
@@ -38,13 +39,18 @@ public class App {
             System.out.println("4. Consultar produto");
             System.out.println("5. Exibir balanço");
             System.out.println("6. Sair");
-            escolha = scanner.nextInt();
+
+            scanner.hasNextInt();
+            if(scanner.hasNextInt() )
+                escolha = scanner.nextInt(); // if there is another number  
+            else 
+                escolha = 6; // nothing added in the input 
+            
             switch (escolha) {
                 case 1:
                     System.out.println("Você selecionou a opção 1 - Venda de produto.");
                     registrarVenda(estoque);
-                    System.out.print(p2.getEstoque());
-                    continue;
+                    break;
                 case 2:
                     System.out.println("Você selecionou a opção 2 - Registro de entrada de produtos.");
                     break;
@@ -62,6 +68,7 @@ public class App {
                     break;
                 case 6:
                     System.out.println("Saindo...");
+                    break;
                 default:
                     System.out.println("Opção inválida. Tente novamente.");
                     break;
@@ -83,17 +90,9 @@ public class App {
         produto.saidaDeProduto(estoque.getProdutoPeloId(idProduto), quantidadeVendida);
         idScan.close();
         quantProdScan.close();
-        System.out.print(quantidadeVendida + " itens foram debitados do estoque;");
+        System.out.println(quantidadeVendida + " itens foram debitados do estoque;");
     
     }
 
-    public static int scannerID() {
-    	Scanner idScan = new Scanner(System.in);
-        int idProduto = 0;
-        idProduto = idScan.nextInt();
-        idScan.close();
-        return idProduto;
-        
-    }
  
 }

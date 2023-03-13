@@ -24,7 +24,7 @@ public class Produto {
     }
 
     public Produto(int id, String descricao, double precoCusto, double lucroPorcentagem, int estoqueMinimo) {
-        //this.setId(id);
+        this.setId(id);
         this.setDescricao(descricao);
         this.precoCusto = precoCusto;
         this.setLucroPorcentagem(lucroPorcentagem);
@@ -99,23 +99,27 @@ public class Produto {
     	return ("Produto: " + this.getDescricao() + "\nPreço de Custo: " + this.getPrecoCusto() + "\nPreço de Venda: " + this.getPrecoVenda() + "\nPorcentagem de Lucro: " + this.getLucroPorcentagem() + "Estoque: " + this.getEstoque() + "\nEstoque Minimo: " + this.getEstoqueMinimo() + "\nValor Arrecadado: " + this.getValorArrecadado() + "\nQuantidade Vendida: " + this.getQuantidadeVendida() + "\nValor Gasto Aquisição: " + this.getValorGastoCompra() + "\nQuantidade Comprada: " + this.getQuantidadeComprada());
     }
 
-	private int getQuantidadeComprada() {
+    public int getId() {
+        return this.id;
+    }
+
+	public int getQuantidadeComprada() {
 		return this.quantidadeComprada;
 	}
 
-	private double getValorGastoCompra() {
+    public double getValorGastoCompra() {
 		return this.valorGastoCompra;
 	}
 
-	private int getQuantidadeVendida() {
+	public int getQuantidadeVendida() {
 		return this.quantidadeVendida;
 	}
 
-	private double getValorArrecadado() {
+	public double getValorArrecadado() {
 		return this.valorArrecadadoVenda;
 	}
 
-	private int getEstoqueMinimo() {
+	public int getEstoqueMinimo() {
 		return this.estoqueMinimo;
 	}
 
@@ -123,11 +127,11 @@ public class Produto {
 		return this.estoque;
 	}
 
-	private double getLucroPorcentagem() {
+	public double getLucroPorcentagem() {
 		return this.lucroPorcentagem;
 	}
 
-	private double getPrecoCusto() {
+	public double getPrecoCusto() {
 		return this.precoCusto;
 	}
 
