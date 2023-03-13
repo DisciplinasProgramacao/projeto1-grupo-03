@@ -41,7 +41,7 @@ public class App {
             switch (escolha) {
                 case 1:
                     System.out.println("Você selecionou a opção 1.");
-                    registrarVenda();
+                    // registrarVenda();
 
                     break;
                 case 2:
@@ -51,19 +51,23 @@ public class App {
                     System.out.println("Você selecionou a opção 3.");
                     break;
                 case 4:
-                    System.out.println("Você selecionou a opção 4.");
+                	System.out.println("Qual o id do produto que deseja consultar?");
+                    estoque.consultaProduto(scannerID());
                     break;
                 case 5:
                     System.out.println("Você selecionou a opção 5.");
                     break;
                 case 6:
                     System.out.println("Saindo...");
+                    break;
                 default:
                     System.out.println("Opção inválida. Tente novamente.");
                     break;
             }
         } while (escolha != 6);
         scanner.close();
+    
+    
     }
 /**
     public static void registrarVenda() {
@@ -76,4 +80,13 @@ public class App {
     }
 
  */
+    
+    public static int scannerID() {
+    	Scanner idScan = new Scanner(System.in);
+        int idProduto = 0;
+        idProduto = idScan.nextInt();
+        idScan.close();
+        return idProduto;
+        
+    }
 }

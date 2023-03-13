@@ -92,4 +92,45 @@ public class Produto {
         this.valorArrecadadoVenda += (getPrecoVenda() * quantidadeVendida);
     }
 
+    
+    public String getDescricaoCompleta() {
+    	return ("Produto: " + this.getDescricao() + "\nPreço de Custo: " + this.getPrecoCusto() + "\nPreço de Venda: " + this.getPrecoVenda() + "\nPorcentagem de Lucro: " + this.getLucroPorcentagem() + "Estoque: " + this.getEstoque() + "\nEstoque Minimo: " + this.getEstoqueMinimo() + "\nValor Arrecadado: " + this.getValorArrecadado() + "\nQuantidade Vendida: " + this.getQuantidadeVendida() + "\nValor Gasto Aquisição: " + this.getValorGastoCompra() + "\nQuantidade Comprada: " + this.getQuantidadeComprada());
+    }
+
+	private int getQuantidadeComprada() {
+		return this.quantidadeComprada;
+	}
+
+	private double getValorGastoCompra() {
+		return this.valorGastoCompra;
+	}
+
+	private int getQuantidadeVendida() {
+		return this.quantidadeVendida;
+	}
+
+	private double getValorArrecadado() {
+		return this.valorArrecadadoVenda;
+	}
+
+	private int getEstoqueMinimo() {
+		return this.estoqueMinimo;
+	}
+
+	public int getEstoque() {
+		return this.estoque;
+	}
+
+	private double getLucroPorcentagem() {
+		return this.lucroPorcentagem;
+	}
+
+	private double getPrecoCusto() {
+		return this.precoCusto;
+	}
+
+	private String getDescricao() {
+		return this.descricao;
+	}
+
 }

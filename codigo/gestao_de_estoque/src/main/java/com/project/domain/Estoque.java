@@ -59,7 +59,7 @@ public class Estoque {
         }
     	return valorTotal;
     }
-
+    
     // Checa a  lista de produtos buscando pelo produto com o id inserido
     public Produto getProdutoPeloId(int id) {
         for (Produto produto : produtos) {
@@ -70,7 +70,13 @@ public class Estoque {
         return null;
     }
     
+    
+    public void consultaProduto(int id) {
+    	Produto produto = getProdutoPeloId(id);
+    	System.out.println(produto.getDescricaoCompleta());
+    }
 }
+    
 
 
 
