@@ -41,21 +41,21 @@ public class App {
             escolha = scanner.nextInt();
             switch (escolha) {
                 case 1:
-                    System.out.println("Você selecionou a opção 1.");
+                    System.out.println("Você selecionou a opção 1 - Venda de produto.");
                     registrarVenda(estoque);
                     System.out.print(p2.getEstoque());
                     continue;
                 case 2:
-                    System.out.println("Você selecionou a opção 2.");
+                    System.out.println("Você selecionou a opção 2 - Registro de entrada de produtos.");
                     break;
                 case 3:
-                    System.out.println("Você selecionou a opção 3.");
+                    System.out.println("Você selecionou a opção 3 - Consultar o estoque.");
                     break;
                 case 4:
-                    System.out.println("Você selecionou a opção 4.");
+                    System.out.println("Você selecionou a opção 4 - Consultar um problema.");
                     break;
                 case 5:
-                    System.out.println("Você selecionou a opção 5.");
+                    System.out.println("Você selecionou a opção 5 - Exibir demonstrativo.");
                     break;
                 case 6:
                     System.out.println("Saindo...");
@@ -81,9 +81,16 @@ public class App {
         idScan.close();
         quantProdScan.close();
         System.out.print(quantidadeVendida + " itens foram debitados do estoque;");
-
-
+    
     }
 
+    public static int scannerID() {
+    	Scanner idScan = new Scanner(System.in);
+        int idProduto = 0;
+        idProduto = idScan.nextInt();
+        idScan.close();
+        return idProduto;
+        
+    }
  
 }
