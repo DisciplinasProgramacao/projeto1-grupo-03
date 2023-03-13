@@ -24,7 +24,7 @@ public class Produto {
     }
 
     public Produto(int id, String descricao, double precoCusto, double lucroPorcentagem, int estoqueMinimo) {
-        this.setId(id);
+        //this.setId(id);
         this.setDescricao(descricao);
         this.precoCusto = precoCusto;
         this.setLucroPorcentagem(lucroPorcentagem);

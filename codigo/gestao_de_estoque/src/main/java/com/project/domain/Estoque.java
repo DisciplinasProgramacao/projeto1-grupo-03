@@ -35,6 +35,15 @@ public class Estoque {
     public int getQuantidadeProdutos() {
         return produtos.size();
     }
+    
+    public int getQuantidadeProdutosTotal() {
+    	int quantProdTot = 0;
+        for (int i = 0; i < this.produtos.size(); i++) {
+            Produto produto = this.produtos.get(i);
+            quantProdTot += produto.getEstoque();
+        }
+		return quantProdTot;
+    }
 
     public List<Produto> getProdutosAbaixoDoMinimo() {
         List<Produto> produtoAbaixoDoMinimo = new ArrayList<>();
@@ -60,6 +69,7 @@ public class Estoque {
     	return valorTotal;
     }
     
+   /*
     // Checa a  lista de produtos buscando pelo produto com o id inserido
     public Produto getProdutoPeloId(int id) {
         for (Produto produto : produtos) {
@@ -75,6 +85,11 @@ public class Estoque {
     	Produto produto = getProdutoPeloId(id);
     	System.out.println(produto.getDescricaoCompleta());
     }
+	*/
+
+	public String descricaoCompleta() {
+		return("Quantidade de Tipos de Produtos em Estoque: " + this.getQuantidadeProdutos() + "\nQuantidade de Produtos em Estoque: " + this.getQuantidadeProdutosTotal() + "\nValor Total do Estoque: " + this.getValorTotalEstoque() + "\nProdutos com Estoque Abaixo do Mínimo: " + this.getProdutosAbaixoDoMinimo());
+	}
 }
     
 

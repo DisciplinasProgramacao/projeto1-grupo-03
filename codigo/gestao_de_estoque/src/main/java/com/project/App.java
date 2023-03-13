@@ -48,11 +48,12 @@ public class App {
                     System.out.println("Você selecionou a opção 2.");
                     break;
                 case 3:
-                    System.out.println("Você selecionou a opção 3.");
+                    System.out.println("Estoque:");
+                    System.out.println(estoque.descricaoCompleta());
                     break;
                 case 4:
                 	System.out.println("Qual o id do produto que deseja consultar?");
-                    estoque.consultaProduto(scannerID());
+                    //estoque.consultaProduto(scannerID());
                     break;
                 case 5:
                     System.out.println("Você selecionou a opção 5.");
