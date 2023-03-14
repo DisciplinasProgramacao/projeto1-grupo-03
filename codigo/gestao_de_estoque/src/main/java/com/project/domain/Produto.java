@@ -68,8 +68,8 @@ public class Produto {
         }
     }
 
-    public boolean checaEstoqueMinimo(int estoque, int estoqueMinimo) {
-        return (estoque < estoqueMinimo);
+    public boolean checaEstoqueMinimo() {
+        return (this.estoque < this.estoqueMinimo);
     }
 
     public void entradaDeProduto (int quantidadeComprada, double precoCusto) {
