@@ -107,8 +107,7 @@ public class App {
         quantidadeComprada = quantProdScan.nextInt();
         System.out.println("Qual a preço do produto comprados");
         precoCusto = precoCustoScan.nextDouble(); 
-        Produto produto = estoque.getProdutoPeloId(idProduto);
-        produto.entradaDeProduto(produto, quantidadeComprada, precoCusto);
+        estoque.reporEstoque(idProduto, quantidadeComprada, precoCusto);
         idScan.close();
         quantProdScan.close();
         precoCustoScan.close();

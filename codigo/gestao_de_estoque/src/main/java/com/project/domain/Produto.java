@@ -28,6 +28,10 @@ public class Produto {
 
     }
 
+    private void setId(int id) {
+        this.id = id;
+    }
+
     int getId() {
         return this.id;
     }

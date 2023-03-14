@@ -104,20 +104,9 @@ public class Estoque {
     /**
      * Repõe o estoque do produto
      */
-    public void reporEstoque(){
-        Scanner lerId = new Scanner(System.in);
-        Scanner lerQtndProduto = new Scanner(System.in);
-        Scanner lerPrecoProduto = new Scanner(System.in);
-        int id, qtndProduto;
-        double precoProduto;
-        System.out.println("qual o ID do produto você deseja repor?");
-        id = lerId.nextInt();
-        System.out.println("qual a quantidade desse produto?");
-        qtndProduto = lerQtndProduto.nextInt();
-        System.out.println("qual o preço desse produto?");
-        precoProduto = lerPrecoProduto.nextDouble();
+    public void reporEstoque(int id, int quantidadeComprada, double precoCusto){
         Produto produto = getProdutoPeloId(id);
-        produto.entradaDeProduto(produto, qtndProduto, precoProduto);
+        produto.entradaDeProduto(produto, quantidadeComprada, precoCusto);
     }
 
     /**
