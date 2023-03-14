@@ -1,41 +1,41 @@
 package com.project.domain;
 
+
 import lombok.Data;
 
 @Data
 public class Produto {
-    private static final double IMPOSTOS_PORCENTAGEM = 0.18;
+    static double IMPOSTOS_PORCENTAGEM = 0.18;
+    static int id;
+    String descricao;
+    double precoCusto;
+    double precoVenda;
+    double lucroPorcentagem;
+    int quantidadeComprada;
+    int quantidadeVendida;
+    double valorGastoCompra;
+    double valorArrecadadoVenda;
+    int estoque;
+    int estoqueMinimo;
 
-    int id = 0;
-    private String descricao;
-    private double precoCusto;
-    private double lucroPorcentagem;
-    private int estoque = 0;
-    private int estoqueMinimo;
-    private double valorArrecadadoVenda = 0;
-    private int quantidadeVendida = 0;
-    private double valorGastoCompra = 0;
-    private int quantidadeComprada = 0;
-
-    public Produto(int id, String descricao, double precoCusto, double lucroPorcentagem, int estoqueMinimo, int estoque) {
-        this(id, descricao, precoCusto, lucroPorcentagem, estoqueMinimo);
-        this.estoque = estoque;
-
-    }
 
     public Produto(int id, String descricao, double precoCusto, double lucroPorcentagem, int estoqueMinimo) {
         this.setId(id);
         this.setDescricao(descricao);
         this.precoCusto = precoCusto;
         this.setLucroPorcentagem(lucroPorcentagem);
-        this.estoqueMinimo = estoqueMinimo;
+        id++;
 
     }
 
+    int getId() {
+        return this.id;
+    }
 
     /**
      * Lucro deve ser entre 30% e 80%
      * @param lucroPorcentagem exemplo 0.3
+     * @exception RuntimeException
      */
     public void setLucroPorcentagem(double lucroPorcentagem) {
         if (lucroPorcentagem >= 0.3 && lucroPorcentagem <= 0.8) {
@@ -52,35 +52,19 @@ public class Produto {
         return (precoCusto * (1 + lucroPorcentagem)) * IMPOSTOS_PORCENTAGEM;
     }
 
-    /**
-     * Garante que a descrição tenha 3 ou mais caracteres
-     * @param descricao
-     */
     
-    public void setDescricao(String descricao) {
+    public String setDescricao(String descricao) {
         if(descricao.length() >= 3) {
-            this.descricao = descricao;
+            return (this.descricao = descricao);
         }
         else{
            throw new RuntimeException("A descrição deve ter 3 ou mais caracteres.");
         }
     }
 
-    private double getLucro() {
-    	return this.precoCusto * lucroPorcentagem;
+    public boolean checaEstoqueMinimo(int estoque, int estoqueMinimo) {
+        return (estoque < estoqueMinimo);
     }
-    
-    public double getPrecoVenda() {
-    	return getImpostos() + getLucro() + precoCusto;
-    }
-    
-    public boolean checaEstoqueMinimo() {
-        return this.estoque < this.estoqueMinimo;
-    }
-
-	public void setPrecoCusto(int precoCusto) {
-		this.precoCusto = precoCusto;
-	}
 
     public void entradaDeProduto (Produto produto, int quantidadeComprada, double precoCusto) {
         this.quantidadeComprada += quantidadeComprada;
@@ -94,32 +78,27 @@ public class Produto {
         this.estoque -= quantidadeVendida;
     }
 
-    
     public String getDescricaoCompleta() {
     	return ("Produto: " + this.getDescricao() + "\nPreço de Custo: " + this.getPrecoCusto() + "\nPreço de Venda: " + this.getPrecoVenda() + "\nPorcentagem de Lucro: " + this.getLucroPorcentagem() + "Estoque: " + this.getEstoque() + "\nEstoque Minimo: " + this.getEstoqueMinimo() + "\nValor Arrecadado: " + this.getValorArrecadado() + "\nQuantidade Vendida: " + this.getQuantidadeVendida() + "\nValor Gasto Aquisição: " + this.getValorGastoCompra() + "\nQuantidade Comprada: " + this.getQuantidadeComprada());
     }
 
-    public int getId() {
-        return this.id;
-    }
-
-	public int getQuantidadeComprada() {
+	private int getQuantidadeComprada() {
 		return this.quantidadeComprada;
 	}
 
-    public double getValorGastoCompra() {
+	private double getValorGastoCompra() {
 		return this.valorGastoCompra;
 	}
 
-	public int getQuantidadeVendida() {
+	private int getQuantidadeVendida() {
 		return this.quantidadeVendida;
 	}
 
-	public double getValorArrecadado() {
+	private double getValorArrecadado() {
 		return this.valorArrecadadoVenda;
 	}
 
-	public int getEstoqueMinimo() {
+	private int getEstoqueMinimo() {
 		return this.estoqueMinimo;
 	}
 
@@ -127,16 +106,15 @@ public class Produto {
 		return this.estoque;
 	}
 
-	public double getLucroPorcentagem() {
+	private double getLucroPorcentagem() {
 		return this.lucroPorcentagem;
 	}
 
-	public double getPrecoCusto() {
+	private double getPrecoCusto() {
 		return this.precoCusto;
 	}
 
-	public String getDescricao() {
+	private String getDescricao() {
 		return this.descricao;
 	}
-
 }
