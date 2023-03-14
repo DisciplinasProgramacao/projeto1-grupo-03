@@ -5,25 +5,27 @@ import lombok.Data;
 
 @Data
 public class Produto {
-    static double IMPOSTOS_PORCENTAGEM = 0.18;
-    static int id;
-    String descricao;
-    double precoCusto;
-    double precoVenda;
-    double lucroPorcentagem;
-    int quantidadeComprada;
-    int quantidadeVendida;
-    double valorGastoCompra;
-    double valorArrecadadoVenda;
-    int estoque;
-    int estoqueMinimo;
+    private static double IMPOSTOS_PORCENTAGEM = 0.18;
+    private static int id;
+    private String descricao;
+    private double precoCusto;
+    private double precoVenda;
+    private double lucroPorcentagem;
+    private int quantidadeComprada;
+    private int quantidadeVendida;
+    private double valorGastoCompra;
+    private double valorArrecadadoVenda;
+    private int estoque;
+    private int estoqueMinimo;
 
 
-    public Produto(int id, String descricao, double precoCusto, double lucroPorcentagem, int estoqueMinimo) {
+    public Produto(String descricao, double precoCusto, double lucroPorcentagem,int estoque, int estoqueMinimo) {
         this.setId(id);
         this.setDescricao(descricao);
         this.precoCusto = precoCusto;
         this.setLucroPorcentagem(lucroPorcentagem);
+        this.estoque = estoque;
+        this.estoqueMinimo = estoqueMinimo;
         id++;
 
     }
@@ -70,13 +72,13 @@ public class Produto {
         return (estoque < estoqueMinimo);
     }
 
-    public void entradaDeProduto (Produto produto, int quantidadeComprada, double precoCusto) {
+    public void entradaDeProduto (int quantidadeComprada, double precoCusto) {
         this.quantidadeComprada += quantidadeComprada;
         this.valorGastoCompra += (precoCusto * quantidadeComprada);
         this.estoque += quantidadeComprada;
     }
 
-    public void saidaDeProduto (Produto produto, int quantidadeVendida) {
+    public void saidaDeProduto (int quantidadeVendida) {
         this.quantidadeVendida += quantidadeVendida;
         this.valorArrecadadoVenda += (getPrecoVenda() * quantidadeVendida);
         this.estoque -= quantidadeVendida;

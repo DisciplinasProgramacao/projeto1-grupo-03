@@ -96,9 +96,9 @@ public class Estoque {
      * Consulta um produto pelo seu id
      * @param id
      */
-    public void consultaProduto(int id) {
+    public String consultaProduto(int id) {
     	Produto produto = getProdutoPeloId(id);
-    	System.out.println(produto.getDescricaoCompleta());
+    	return (produto.getDescricaoCompleta());
     }
 
     /**
@@ -106,19 +106,16 @@ public class Estoque {
      */
     public void reporEstoque(int id, int quantidadeComprada, double precoCusto){
         Produto produto = getProdutoPeloId(id);
-        produto.entradaDeProduto(produto, quantidadeComprada, precoCusto);
+        produto.entradaDeProduto(quantidadeComprada, precoCusto);
     }
 
     /**
      * Retira produto do estoque
      */
-    public void retirarDoEstoque(){
-        Scanner lerId = new Scanner(System.in);
-        int id;
-        System.out.println("qual o ID do produto você deseja retirar do estoque?");
-        id = lerId.nextInt();
+    public void retirarDoEstoque(int id){
         Produto produto = getProdutoPeloId(id);
-        this.removerProduto(produto);
+        if (produto != null)
+            this.removerProduto(produto);
     }
 
     /**
