@@ -10,15 +10,17 @@ public class App {
         
 
         Estoque estoque = new Estoque(50);
-        Produto p1 = new Produto("12 Ovos", 2.0, 0.5, 10, 15);
-        Produto p2 = new Produto("Manteiga 200g", 4.0, 0.5, 10, 15);
-        Produto p3 = new Produto("Pão de forma", 3.0, 0.5, 10, 15);
-        Produto p4 = new Produto("Biscoito de Polvinho 90g", 1.0, 0.5, 10, 15);
-        Produto p5 = new Produto("Coca-Cola 2Lt", 1.5, 0.5, 10, 15);
-        Produto p6 = new Produto("Frango 1Kg", 10.0, 0.5, 10, 15);
-        Produto p7 = new Produto("Penca de Banana", 5.0, 0.5, 5, 5);
-        Produto p8 = new Produto("Tomate", 1.0, 0.5, 10, 5);
-        Produto p9 = new Produto("Leite 1lt", 2.0, 0.5, 10, 10);
+
+        //tive que corrigir todos os construtores
+        Produto p1 = new Produto(1,"12 Ovos", 2.0, 0.5, 10, 15);
+        Produto p2 = new Produto(1,"Manteiga 200g", 4.0, 0.5, 10, 15);
+        Produto p3 = new Produto(1,"Pão de forma", 3.0, 0.5, 10, 15);
+        Produto p4 = new Produto(1,"Biscoito de Polvinho 90g", 1.0, 0.5, 10, 15);
+        Produto p5 = new Produto(1,"Coca-Cola 2Lt", 1.5, 0.5, 10, 15);
+        Produto p6 = new Produto(1,"Frango 1Kg", 10.0, 0.5, 10, 15);
+        Produto p7 = new Produto(1,"Penca de Banana", 5.0, 0.5, 5, 5);
+        Produto p8 = new Produto(1,"Tomate", 1.0, 0.5, 10, 5);
+        Produto p9 = new Produto(1,"Leite 1lt", 2.0, 0.5, 10, 10);
         estoque.adicionarProduto(p1);
         estoque.adicionarProduto(p2);
         estoque.adicionarProduto(p3);
