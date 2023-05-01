@@ -19,7 +19,7 @@ public class Produto {
     private int estoqueMinimo;
 
 
-    public Produto(String descricao, double precoCusto, double lucroPorcentagem,int estoque, int estoqueMinimo) {
+    public Produto(int x, String descricao, double precoCusto, double lucroPorcentagem,int estoque, int estoqueMinimo) { //tive que corrigir
         this.setId(id);
         this.setDescricao(descricao);
         this.precoCusto = precoCusto;
@@ -68,8 +68,8 @@ public class Produto {
         }
     }
 
-    public boolean checaEstoqueMinimo() {
-        return (this.estoque < this.estoqueMinimo);
+    public boolean checaEstoqueMinimo(int estoque, int estoqueMinimo) {
+        return (estoque < estoqueMinimo);
     }
 
     public void entradaDeProduto (int quantidadeComprada, double precoCusto) {
@@ -92,7 +92,7 @@ public class Produto {
 		return this.quantidadeComprada;
 	}
 
-	private double getValorGastoCompra() {
+	public double getValorGastoCompra() { //tive que corrigir
 		return this.valorGastoCompra;
 	}
 
@@ -100,7 +100,7 @@ public class Produto {
 		return this.quantidadeVendida;
 	}
 
-	private double getValorArrecadado() {
+	public double getValorArrecadado() { //tive que corrigir
 		return this.valorArrecadadoVenda;
 	}
 
