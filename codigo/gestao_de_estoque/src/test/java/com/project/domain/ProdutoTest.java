@@ -60,7 +60,7 @@ class ProdutoTest {
     
     @Test
     public void getPrecoVendaTest() {
-        Produto p1 = new Produto(0, "meu",100, 0.5, 10, 1);
+        Produto p1 = new Produto("meu",100, 0.5, 10, 1);
         // produto.setLucroPorcentagem(0.5);
         // produto.setPrecoCusto(50);
         //venda: 100 + 50 + 27 = 177
@@ -76,7 +76,7 @@ class ProdutoTest {
     void checaEstoqueNoMinimoTest() {
         produto.setEstoqueMinimo(5);
         produto.setEstoque(5);
-        assertFalse(produto.checaEstoqueMinimo());
+        assertFalse(produto.checaEstoqueMinimo(produto.getEstoque(), produto.getEstoqueMinimo()));
     }
 
     /*
@@ -86,6 +86,6 @@ class ProdutoTest {
     void checaEstoqueAbaixoDoMinimoTest() {
         produto.setEstoqueMinimo(5);
         produto.setEstoque(4);
-        assertTrue(produto.checaEstoqueMinimo());
+        assertTrue(produto.checaEstoqueMinimo(produto.getEstoque(), produto.getEstoqueMinimo()));
     }
 }

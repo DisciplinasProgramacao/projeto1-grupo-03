@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 public class Produto {
     private static double IMPOSTOS_PORCENTAGEM = 0.18;
-    private static int id;
+    private static int id = 0;
     private String descricao;
     private double precoCusto;
     private double precoVenda;
@@ -19,15 +19,15 @@ public class Produto {
     private int estoqueMinimo;
 
 
-    public Produto(int x, String descricao, double precoCusto, double lucroPorcentagem,int estoque, int estoqueMinimo) { //tive que corrigir
+    public Produto(String descricao, double precoCusto, double lucroPorcentagem,int estoque, int estoqueMinimo) { //tive que corrigir
         this.setId(id);
         this.setDescricao(descricao);
         this.precoCusto = precoCusto;
         this.setLucroPorcentagem(lucroPorcentagem);
         this.estoque = estoque;
         this.estoqueMinimo = estoqueMinimo;
+        this.setPrecoVenda();
         id++;
-
     }
 
     private void setId(int id) {
@@ -88,6 +88,10 @@ public class Produto {
     	return ("Produto: " + this.getDescricao() + "\nPreço de Custo: " + this.getPrecoCusto() + "\nPreço de Venda: " + this.getPrecoVenda() + "\nPorcentagem de Lucro: " + this.getLucroPorcentagem() + "Estoque: " + this.getEstoque() + "\nEstoque Minimo: " + this.getEstoqueMinimo() + "\nValor Arrecadado: " + this.getValorArrecadado() + "\nQuantidade Vendida: " + this.getQuantidadeVendida() + "\nValor Gasto Aquisição: " + this.getValorGastoCompra() + "\nQuantidade Comprada: " + this.getQuantidadeComprada());
     }
 
+    public void setPrecoVenda() {
+		this.precoVenda = this.precoCusto + (this.precoCusto * this.lucroPorcentagem) + ((this.precoCusto + (this.precoCusto * this.lucroPorcentagem)) * this.IMPOSTOS_PORCENTAGEM);
+	}
+
 	private int getQuantidadeComprada() {
 		return this.quantidadeComprada;
 	}
@@ -104,7 +108,7 @@ public class Produto {
 		return this.valorArrecadadoVenda;
 	}
 
-	private int getEstoqueMinimo() {
+	public int getEstoqueMinimo() {
 		return this.estoqueMinimo;
 	}
 
