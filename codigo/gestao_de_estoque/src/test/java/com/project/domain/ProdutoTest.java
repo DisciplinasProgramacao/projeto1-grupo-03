@@ -14,7 +14,7 @@ class ProdutoTest {
      */
     @BeforeEach
     public void setUp() {
-        produto = new Produto("desc", 1.0, 0.5, 10, 5 );
+        produto = new Produto(1, "desc", 1.0, 0.5, 10, 5 );
     }
 
     /**
@@ -60,9 +60,7 @@ class ProdutoTest {
     
     @Test
     public void getPrecoVendaTest() {
-        Produto p1 = new Produto("meu",100, 0.5, 10, 1);
-        // produto.setLucroPorcentagem(0.5);
-        // produto.setPrecoCusto(50);
+        Produto p1 = new Produto(1, "meu",100, 0.5, 10, 1);
         //venda: 100 + 50 + 27 = 177
     	double venda = p1.getPrecoVenda();
     	assertEquals(177, venda, 0.01);

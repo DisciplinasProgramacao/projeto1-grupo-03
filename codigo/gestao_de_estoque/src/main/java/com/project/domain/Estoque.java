@@ -22,8 +22,8 @@ public class Estoque {
      * @param produto
      */
     public void adicionarProduto(Produto produto) {
-        if (produtos.size() < tamanhoMaximo) {
-            produtos.add(produto);
+        if (this.produtos.size() < this.tamanhoMaximo) {
+            this.produtos.add(produto);
         } else {
             throw new RuntimeException("Estoque cheio. Impossível adicionar produto.");
         }
@@ -87,6 +87,7 @@ public class Estoque {
             if (produto.getId() == id) {
                 return produto;
             }
+            System.out.println(produto.getId());
         }
         return null;
     }

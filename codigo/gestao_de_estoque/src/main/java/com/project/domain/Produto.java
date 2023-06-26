@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 public class Produto {
     private static double IMPOSTOS_PORCENTAGEM = 0.18;
-    private static int id = 0;
+    private int id;
     private String descricao;
     private double precoCusto;
     private double precoVenda;
@@ -19,24 +19,16 @@ public class Produto {
     private int estoqueMinimo;
 
 
-    public Produto(String descricao, double precoCusto, double lucroPorcentagem,int estoque, int estoqueMinimo) { //tive que corrigir
-        this.setId(id);
+    public Produto(int id, String descricao, double precoCusto, double lucroPorcentagem,int estoque, int estoqueMinimo) { //tive que corrigir
+        this.id = id;
         this.setDescricao(descricao);
         this.precoCusto = precoCusto;
         this.setLucroPorcentagem(lucroPorcentagem);
         this.estoque = estoque;
         this.estoqueMinimo = estoqueMinimo;
         this.setPrecoVenda();
-        id++;
     }
 
-    private void setId(int id) {
-        this.id = id;
-    }
-
-    int getId() {
-        return this.id;
-    }
 
     /**
      * Lucro deve ser entre 30% e 80%
@@ -127,4 +119,8 @@ public class Produto {
 	private String getDescricao() {
 		return this.descricao;
 	}
+
+    public int getId() {
+        return this.id;
+    }
 }

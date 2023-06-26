@@ -9,18 +9,18 @@ public class App {
     public static void main(String[] args) {
         
 
-        Estoque estoque = new Estoque(50);
+        Estoque estoque = new Estoque(100);
 
         //tive que corrigir todos os construtores
         Produto p1 = new Produto(1,"12 Ovos", 2.0, 0.5, 10, 15);
-        Produto p2 = new Produto(1,"Manteiga 200g", 4.0, 0.5, 10, 15);
-        Produto p3 = new Produto(1,"Pão de forma", 3.0, 0.5, 10, 15);
-        Produto p4 = new Produto(1,"Biscoito de Polvinho 90g", 1.0, 0.5, 10, 15);
-        Produto p5 = new Produto(1,"Coca-Cola 2Lt", 1.5, 0.5, 10, 15);
-        Produto p6 = new Produto(1,"Frango 1Kg", 10.0, 0.5, 10, 15);
-        Produto p7 = new Produto(1,"Penca de Banana", 5.0, 0.5, 5, 5);
-        Produto p8 = new Produto(1,"Tomate", 1.0, 0.5, 10, 5);
-        Produto p9 = new Produto(1,"Leite 1lt", 2.0, 0.5, 10, 10);
+        Produto p2 = new Produto(2,"Manteiga 200g", 4.0, 0.5, 10, 15);
+        Produto p3 = new Produto(3,"Pão de forma", 3.0, 0.5, 10, 15);
+        Produto p4 = new Produto(4,"Biscoito de Polvinho 90g", 1.0, 0.5, 10, 15);
+        Produto p5 = new Produto(5,"Coca-Cola 2Lt", 1.5, 0.5, 10, 15);
+        Produto p6 = new Produto(6,"Frango 1Kg", 10.0, 0.5, 10, 15);
+        Produto p7 = new Produto(7,"Penca de Banana", 5.0, 0.5, 5, 5);
+        Produto p8 = new Produto(8,"Tomate", 1.0, 0.5, 10, 5);
+        Produto p9 = new Produto(9,"Leite 1lt", 2.0, 0.5, 10, 10);
         estoque.adicionarProduto(p1);
         estoque.adicionarProduto(p2);
         estoque.adicionarProduto(p3);
@@ -44,7 +44,6 @@ public class App {
             System.out.println("6. Sair");
 
             escolha = scanner.nextInt();
-
             
             switch (escolha) {
                 case 1:
@@ -63,7 +62,7 @@ public class App {
                 case 4:
                     System.out.println("Você selecionou a opção 4 - Consultar um produto.");
                     System.out.println("Digite o Id do produto que deseja consultar:");
-                    estoque.consultaProduto(scannerID());
+                    System.out.println(estoque.consultaProduto(scannerID()));
                     break;
                 case 5:
                     System.out.println("Você selecionou a opção 5 - Exibir demonstrativo.");
@@ -82,7 +81,7 @@ public class App {
 
     public static void registrarVenda(Estoque estoque) {
         Scanner idScan = new Scanner(System.in);
-        Scanner quantProdScan = new Scanner (System.in);
+        Scanner quantProdScan = new Scanner(System.in);
         int idProduto = 0;
         int quantidadeVendida = 0;
         System.out.println("Qual o id do produto vendido?");
@@ -91,8 +90,6 @@ public class App {
         quantidadeVendida = quantProdScan.nextInt();
         Produto produto = estoque.getProdutoPeloId(idProduto);
         produto.saidaDeProduto(quantidadeVendida);
-        idScan.close();
-        quantProdScan.close();
         System.out.println(quantidadeVendida + " itens foram debitados do estoque;");
     }
 
@@ -110,9 +107,6 @@ public class App {
         System.out.println("Qual a preço do produto comprados");
         precoCusto = precoCustoScan.nextDouble(); 
         estoque.reporEstoque(idProduto, quantidadeComprada, precoCusto);
-        idScan.close();
-        quantProdScan.close();
-        precoCustoScan.close();
         System.out.println(quantidadeComprada + " unidades foram adicionadas ao estoque;");
     }
 
@@ -120,7 +114,6 @@ public class App {
     	Scanner idScan = new Scanner(System.in);
         int idProduto = 0;
         idProduto = idScan.nextInt();
-        idScan.close();
         return idProduto;
         
     }
