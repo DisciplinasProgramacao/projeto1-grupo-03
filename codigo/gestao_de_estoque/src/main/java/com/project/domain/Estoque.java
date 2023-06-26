@@ -54,7 +54,7 @@ public class Estoque {
         List<Produto> produtoAbaixoDoMinimo = new ArrayList<>();
         for (int i = 0; i < this.produtos.size(); i++) {
             Produto produto = this.produtos.get(i);
-            if (produto.checaEstoqueMinimo()) {
+            if (produto.checaEstoqueMinimo(produto.getEstoque(), produto.getEstoqueMinimo())) {
                 produtoAbaixoDoMinimo.add(produto);
             }
         }
