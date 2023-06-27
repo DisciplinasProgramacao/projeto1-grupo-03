@@ -35,11 +35,11 @@ A nota final, que é individual, se dará pela nota acima, multiplicada por um p
     - parcial no Produto e pouco informativa no Estoque.
 	
 	
-### Testes (quantidade e qualidade): 0/4 pontos 
-    - classpath referenciando arquivo local "Users/xxxx/Download..." impede teste de rodar.
-    - testes de produto e estoque chamando construtor não existente de Produto.
-	- produto: 0/2 pontos
-	- estoque: 0/2 pontos
+### Testes (quantidade e qualidade): 3,4/4 pontos 
+    - Estoque: teste de balanço.
+    - Produto: testes de entrada e saída.
+	- produto: 1,6/2 pontos
+	- estoque: 1,8/2 pontos
 
 ---
 
