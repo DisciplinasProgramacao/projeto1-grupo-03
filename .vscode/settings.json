@@ -6,5 +6,6 @@
         "exclude": [
             "c:\\Users\\augustobaldiotti\\Downloads\\jdk-19.0.2.jdk\\Contents\\Home\\lib\\jrt-fs.jar"
         ]
-    }
+    },
+    "java.debug.settings.onBuildFailureProceed": true
 }
